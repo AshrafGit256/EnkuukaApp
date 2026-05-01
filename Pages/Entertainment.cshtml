@@ -1,0 +1,76 @@
+@page
+@model EntertainmentModel
+@{ ViewData["Title"] = "Entertainment"; ViewData["Page"] = "Entertainment"; }
+
+<div class="phero">
+  <img src="https://raw.githubusercontent.com/AshrafGit256/enkuuka-site/main/public/assets/images/Afrigo_Band.png" alt="Entertainment" loading="lazy">
+  <div class="phero-ov"></div>
+  <div class="phero-content">
+    <p class="s-label">Live Performances</p>
+    <h1 class="s-title f-display">A Night of <em>Pure Magic</em></h1>
+  </div>
+</div>
+
+<div class="ticker"><div class="ticker-track">@foreach(var w in new[]{"Eddy Kenzo","Afrigo Band","Azawi","Zuena Kirema","DJ Slick Stuart","Live Music","Baakisimba","Cultural Dance","Eddy Kenzo","Afrigo Band","Azawi","Zuena Kirema","DJ Slick Stuart","Live Music","Baakisimba","Cultural Dance"}){<span class="ticker-item">@w<span class="ticker-dot"></span></span>}</div></div>
+
+<div style="background:#F7EEEB;padding:52px 48px">
+  <div class="fu">
+    <p class="s-label">The Lineup</p>
+    <h2 class="s-title f-display">Artists & <em>Performers</em></h2>
+    <p class="s-body" style="margin-bottom:28px">Uganda's finest artists and cultural performers take the Lubiri stage on December 31st.</p>
+  </div>
+  <div class="event-grid">
+    @{
+      var artists = new[]{
+        ("Headline","Eddy Kenzo","Grammy-nominated afrobeat king — the biggest set of the night.","https://raw.githubusercontent.com/AshrafGit256/enkuuka-site/main/public/assets/images/Afrigo_Band.png"),
+        ("Cultural","Abasakiiko Ensemble","Royal Buganda drumming and dance.","https://raw.githubusercontent.com/AshrafGit256/enkuuka-site/main/public/assets/images/Maganda.jpeg"),
+        ("DJ Set","DJ Slick Stuart","Uganda's premier DJ spinning Afrobeats all night.","https://raw.githubusercontent.com/AshrafGit256/enkuuka-site/main/public/assets/images/Enkkuka_Atmosphere.png"),
+        ("Special Guest","Zuena Kirema","Beloved Ugandan singer under the Lubiri stars.","https://raw.githubusercontent.com/AshrafGit256/enkuuka-site/main/public/assets/images/Cultural_Exhibition.png"),
+        ("Dance","Muyinza Dance Troupe","Spectacular traditional Buganda dances in full ceremonial dress.","https://raw.githubusercontent.com/AshrafGit256/enkuuka-site/main/public/assets/images/maganda.png"),
+        ("Rising Star","Azawi","New-generation Ugandan music, live at Enkuuka.","https://raw.githubusercontent.com/AshrafGit256/enkuuka-site/main/public/assets/images/Afrigo_Band.png"),
+      };
+    }
+    @foreach (var (tag, title, desc, img) in artists) {
+      <div class="event-card">
+        <img src="@img" alt="@title" loading="lazy">
+        <div class="event-card-overlay"></div>
+        <div class="event-card-body">
+          <span class="event-card-tag">@tag</span>
+          <p class="event-card-title f-display">@title</p>
+          <p class="event-card-desc">@desc</p>
+        </div>
+      </div>
+    }
+  </div>
+</div>
+
+<!-- Stage Schedule Strip -->
+<div style="background:#EDD8D0;padding:52px 48px;border-top:1px solid rgba(166,124,46,.18)">
+  <div class="fu">
+    <p class="s-label">Stage Times</p>
+    <h2 class="s-title f-display">Performance <em>Schedule</em></h2>
+  </div>
+  <div style="margin-top:28px;display:flex;flex-direction:column;gap:2px">
+    @{
+      var schedule = new[]{
+        ("5:00 PM","Supporting Acts","Rising stars open the evening","#F7EEEB"),
+        ("7:00 PM","Eddy Kenzo","Headline set — full band production","#EDD8D0"),
+        ("8:30 PM","Afrigo Band","Uganda's legendary orchestra","#F7EEEB"),
+        ("9:30 PM","Royal Bonfire Ceremony","Omuliro Gw'Omwaka","#EDD8D0"),
+        ("10:00 PM","Zuena Kirema","Ballad set under the stars","#F7EEEB"),
+        ("11:00 PM","DJ Slick Stuart & DJ Roja","Pre-midnight DJ battle","#EDD8D0"),
+        ("12:00 AM","New Year Fireworks","Lubiri Palace lights up!","#A62E2E"),
+      };
+    }
+    @foreach (var (time, act, desc, bg) in schedule) {
+      <div style="display:grid;grid-template-columns:120px 1fr 1fr;align-items:center;padding:16px 24px;background:@bg;border-bottom:1px solid rgba(166,124,46,.10)">
+        <span class="f-block" style="color:#A62E2E;font-size:.9rem;letter-spacing:2px">@time</span>
+        <p class="f-display" style="font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:700;color:@(bg=="#A62E2E"?"#FAF5E8":"#1C1A13")">@act</p>
+        <p style="font-size:.78rem;color:@(bg=="#A62E2E"?"rgba(250,245,232,.6)":"#7A5252")">@desc</p>
+      </div>
+    }
+  </div>
+  <div style="margin-top:28px;text-align:center">
+    <a href="/Invitation" class="btn-red">Secure Your Tickets →</a>
+  </div>
+</div>

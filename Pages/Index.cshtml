@@ -1,0 +1,118 @@
+@page
+@model IndexModel
+@{ ViewData["Title"] = "Home"; ViewData["Page"] = "Home"; }
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-track">
+    @foreach (var w in new[]{"31 December","Lubiri Palace","Mengo Kampala","52 Clans","18 Masaza","Cultural Performances","Trade Fair","Fireworks Midnight","Kabaka's Presence","Live Music","Open to All","Buganda Kingdom","31 December","Lubiri Palace","Mengo Kampala","52 Clans","18 Masaza","Cultural Performances","Trade Fair","Fireworks Midnight","Kabaka's Presence","Live Music","Open to All","Buganda Kingdom"}) {
+      <span class="ticker-item">@w<span class="ticker-dot"></span></span>
+    }
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg" style="background-image:url('https://raw.githubusercontent.com/AshrafGit256/enkuuka-site/main/public/assets/images/king_Saha.png')"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-deco"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Lubiri Palace · Mengo · Kampala</p>
+    <h1 class="hero-title f-display">Enkuuka<br><em>y'Omwaka</em></h1>
+    <p class="hero-sub">The Royal Buganda New Year Festival</p>
+    <div class="countdown">
+      <div class="cd-block"><span class="cd-num" id="cd-d">00</span><span class="cd-label">Days</span></div>
+      <span class="cd-sep">:</span>
+      <div class="cd-block"><span class="cd-num" id="cd-h">00</span><span class="cd-label">Hours</span></div>
+      <span class="cd-sep">:</span>
+      <div class="cd-block"><span class="cd-num" id="cd-m">00</span><span class="cd-label">Mins</span></div>
+      <span class="cd-sep">:</span>
+      <div class="cd-block"><span class="cd-num" id="cd-s">00</span><span class="cd-label">Secs</span></div>
+    </div>
+    <div style="display:flex;gap:12px;flex-wrap:wrap">
+      <a href="/Invitation" class="btn-red">Secure Your Tickets →</a>
+      <a href="/Events" class="btn-outline" style="color:rgba(250,245,232,.85);border-color:rgba(250,245,232,.4)">See Day Events</a>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-strip">
+  <div class="stat-cell"><span class="stat-num f-block">52</span><span class="stat-label">Buganda Clans</span></div>
+  <div class="stat-cell"><span class="stat-num f-block">18</span><span class="stat-label">Masaza Counties</span></div>
+  <div class="stat-cell"><span class="stat-num f-block">36</span><span class="stat-label">Kabakas of Buganda</span></div>
+</div>
+
+<!-- HIGHLIGHTS -->
+<div style="background:#F7EEEB;padding:64px 48px">
+  <div class="fu">
+    <p class="s-label">What's On</p>
+    <h2 class="s-title f-display">Highlights at <em>Enkuuka 2025</em></h2>
+  </div>
+  <div class="event-grid" style="margin-top:24px">
+    @{
+      var events = new[]{
+        ("Culture","Royal Drumming & Dance","Ancient Kiganda royal drums and Baakisimba dancers in full regalia.","https://raw.githubusercontent.com/AshrafGit256/enkuuka-site/main/public/assets/images/Maganda.jpeg"),
+        ("Entertainment","Live Music Stage","Uganda's top artists performing through the night until midnight.","https://raw.githubusercontent.com/AshrafGit256/enkuuka-site/main/public/assets/images/Afrigo_Band.png"),
+        ("Trade Fair","SME Marketplace","200+ vendors, corporates and SMEs under one royal roof.","https://raw.githubusercontent.com/AshrafGit256/enkuuka-site/main/public/assets/images/trade.png"),
+        ("Fireworks","New Year Countdown","Spectacular fireworks over Lubiri Palace as the clock strikes 12.","https://raw.githubusercontent.com/AshrafGit256/enkuuka-site/main/public/assets/images/CountDown.png"),
+        ("Heritage","Cultural Exhibitions","Bark cloth, traditional dress, Buganda history on display.","https://raw.githubusercontent.com/AshrafGit256/enkuuka-site/main/public/assets/images/Cultural_Exhibition.png"),
+        ("Community","Festival Atmosphere","50,000 people united — food, laughter and Kiganda pride.","https://raw.githubusercontent.com/AshrafGit256/enkuuka-site/main/public/assets/images/Enkkuka_Atmosphere.png"),
+      };
+    }
+    @foreach (var (tag, title, desc, img) in events) {
+      <div class="event-card">
+        <img src="@img" alt="@title" loading="lazy">
+        <div class="event-card-overlay"></div>
+        <div class="event-card-body">
+          <span class="event-card-tag">@tag</span>
+          <p class="event-card-title f-display">@title</p>
+          <p class="event-card-desc">@desc</p>
+        </div>
+      </div>
+    }
+  </div>
+  <div class="fu" style="margin-top:28px;text-align:center">
+    <a href="/Events" class="btn-outline">View Full Day Events →</a>
+  </div>
+</div>
+
+<!-- SPLIT: Culture -->
+<div class="split">
+  <div class="split-img">
+    <img src="https://raw.githubusercontent.com/AshrafGit256/enkuuka-site/main/public/assets/images/Maganda.jpeg" alt="Culture" loading="lazy">
+    <div class="split-img-overlay"></div>
+  </div>
+  <div class="split-content">
+    <div class="fu">
+      <p class="s-label">Culture & Heritage</p>
+      <h2 class="s-title f-display">600 Years of <em>Kiganda Pride</em></h2>
+      <p class="s-body" style="margin-bottom:22px">The Buganda Kingdom — one of East Africa's oldest and most organised kingdoms. Royal drumming, Baakisimba dance, bark cloth and the sacred clan system come alive at Lubiri Palace every 31st December.</p>
+      <a href="/Culture" class="btn-red">Explore Culture →</a>
+    </div>
+  </div>
+</div>
+
+<!-- SPLIT: Business -->
+<div class="split rev">
+  <div class="split-img">
+    <img src="https://raw.githubusercontent.com/AshrafGit256/enkuuka-site/main/public/assets/images/trade.png" alt="Trade" loading="lazy">
+    <div class="split-img-overlay"></div>
+  </div>
+  <div class="split-content">
+    <div class="fu">
+      <p class="s-label">Business & Trade Fair</p>
+      <h2 class="s-title f-display">50,000 People. <em>One Marketplace.</em></h2>
+      <p class="s-body" style="margin-bottom:22px">Uganda's most impactful end-of-year economic platform. 200+ vendors, SMEs and corporates united under the royal roof of Lubiri.</p>
+      <a href="/Business" class="btn-red">Register as Vendor →</a>
+    </div>
+  </div>
+</div>
+
+<!-- SPONSORS -->
+<div class="sponsors-band">
+  <span style="font-size:.62rem;letter-spacing:3px;text-transform:uppercase;color:#A62E2E;font-weight:700;margin-right:8px">Partners</span>
+  @foreach (var s in new[]{"MTN Uganda","Airtel Uganda","Roofings Group","Bank of Uganda","URA","Uganda Tourism Board","NBS TV","KCCA"}) {
+    <div class="sponsor-pill">@s</div>
+  }
+</div>

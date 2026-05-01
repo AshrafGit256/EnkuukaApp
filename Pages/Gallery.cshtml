@@ -1,0 +1,59 @@
+@page
+@model GalleryModel
+@{ ViewData["Title"] = "Gallery"; ViewData["Page"] = "Gallery"; }
+
+<div class="phero">
+  <img src="https://raw.githubusercontent.com/AshrafGit256/enkuuka-site/main/public/assets/images/Enkkuka_Atmosphere.png" alt="Gallery" loading="lazy">
+  <div class="phero-ov"></div>
+  <div class="phero-content">
+    <p class="s-label">Visual Memories</p>
+    <h1 class="s-title f-display">The <em>Gallery</em></h1>
+  </div>
+</div>
+
+<div class="ticker"><div class="ticker-track">@foreach(var w in new[]{"Royal Drumming","Traditional Dance","Trade Fair","New Year Fireworks","Live Music","Cultural Exhibition","Festival Crowd","Lubiri Palace","Food Market","Royal Drumming","Traditional Dance","Trade Fair","New Year Fireworks","Live Music","Cultural Exhibition","Festival Crowd","Lubiri Palace","Food Market"}){<span class="ticker-item">@w<span class="ticker-dot"></span></span>}</div></div>
+
+<div style="background:#F7EEEB;padding:48px 48px 24px">
+  <div class="fu">
+    <p class="s-label">Enkuuka Through the Lens</p>
+    <h2 class="s-title f-display">Royal Culture, <em>Captured</em></h2>
+    <p class="s-body" style="margin-bottom:32px">Click any image to view it in full. A visual record of Buganda's greatest celebration.</p>
+  </div>
+  <div class="fu">
+    <div class="gal-grid">
+      @{
+        var galleryItems = new[]{
+          ("https://raw.githubusercontent.com/AshrafGit256/enkuuka-site/main/public/assets/images/Maganda.jpeg","Royal Drumming","Culture"),
+          ("https://raw.githubusercontent.com/AshrafGit256/enkuuka-site/main/public/assets/images/maganda.png","Traditional Dance","Heritage"),
+          ("https://raw.githubusercontent.com/AshrafGit256/enkuuka-site/main/public/assets/images/trade.png","Trade Fair","Business"),
+          ("https://raw.githubusercontent.com/AshrafGit256/enkuuka-site/main/public/assets/images/CountDown.png","New Year Fireworks","Celebration"),
+          ("https://raw.githubusercontent.com/AshrafGit256/enkuuka-site/main/public/assets/images/Afrigo_Band.png","Live Music Stage","Entertainment"),
+          ("https://raw.githubusercontent.com/AshrafGit256/enkuuka-site/main/public/assets/images/Cultural_Exhibition.png","Cultural Exhibition","Heritage"),
+          ("https://raw.githubusercontent.com/AshrafGit256/enkuuka-site/main/public/assets/images/Enkkuka_Atmosphere.png","Festival Crowd","Community"),
+          ("https://raw.githubusercontent.com/AshrafGit256/enkuuka-site/main/public/assets/images/Buganda.png","Lubiri Palace","Venue"),
+          ("https://images.unsplash.com/photo-1565299715199-866c917206bb?w=700&q=80","Food Market","Trade Fair"),
+          ("https://raw.githubusercontent.com/AshrafGit256/enkuuka-site/main/public/assets/images/Kabaka.png","Royal Ceremony","Heritage"),
+          ("https://raw.githubusercontent.com/AshrafGit256/enkuuka-site/main/public/assets/images/DressCode.png","Traditional Dress","Culture"),
+          ("http://raw.githubusercontent.com/AshrafGit256/enkuuka-site/main/public/assets/images/Barkcloth.png","Bark Cloth","Heritage"),
+        };
+      }
+      @foreach (var (src, title, sub) in galleryItems) {
+        <div class="gal-item" data-src="@src" data-title="@title" data-sub="@sub">
+          <img src="@src" alt="@title" loading="lazy">
+          <div class="gal-item-overlay">
+            <p class="gal-item-title f-display">@title</p>
+            <p class="gal-item-sub">@sub</p>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</div>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+  <img id="lightboxImg" src="" alt="">
+  <p class="f-display" id="lightboxTitle" style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:700;color:#1C1A13"></p>
+  <p id="lightboxSub" style="color:#A62E2E;font-size:.6rem;letter-spacing:3px;text-transform:uppercase"></p>
+  <p style="color:#7A5252;font-size:.72rem;margin-top:4px">Click anywhere to close</p>
+</div>

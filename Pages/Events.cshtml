@@ -1,0 +1,183 @@
+@page
+@model EventsModel
+@{ ViewData["Title"] = "Events"; ViewData["Page"] = "Events"; }
+
+<div class="phero">
+  <img src="https://raw.githubusercontent.com/AshrafGit256/enkuuka-site/main/public/assets/images/Enkkuka_Atmosphere.png" alt="Events" loading="lazy">
+  <div class="phero-ov"></div>
+  <div class="phero-content">
+    <p class="s-label">31st December · Lubiri Palace</p>
+    <h1 class="s-title f-display">A Day at <em>Enkuuka</em></h1>
+  </div>
+</div>
+
+<div class="ticker"><div class="ticker-track">@foreach(var w in new[]{"8AM Helicopter","Gates Open 9AM","Key Ceremony","Cultural Performances","Kabaka's Address","Clan Championships","Sunset Concert","Headline Acts","Royal Bonfire","Midnight Fireworks","8AM Helicopter","Gates Open 9AM","Key Ceremony","Cultural Performances","Kabaka's Address","Clan Championships","Sunset Concert","Headline Acts","Royal Bonfire","Midnight Fireworks"}){<span class="ticker-item">@w<span class="ticker-dot"></span></span>}</div></div>
+
+<!-- PHASE NAV -->
+<div class="ev-phase-nav-static" style="background:#FDF6F3;border-bottom:1px solid rgba(166,124,46,.18);padding:0 48px;display:flex;gap:0;overflow-x:auto">
+  @foreach (var (icon, label, time, anchor) in new[]{("🌅","Morning","8:00 AM – 12:00 PM","morning"),("☀️","Midday","12:00 PM – 4:00 PM","midday"),("🌆","Evening","4:00 PM – 8:00 PM","evening"),("🌙","Night","8:00 PM – Midnight","night"),("🎆","Midnight","12:00 AM","midnight")}) {
+    <a href="#@anchor" style="padding:14px 22px;white-space:nowrap;text-decoration:none;font-family:'DM Sans',sans-serif;font-size:.65rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#7A5252;border-bottom:2px solid transparent;display:flex;align-items:center;gap:7px;transition:.2s">
+      <span>@icon</span>@label
+      <span style="font-size:.55rem;color:#7A5252;font-weight:400;letter-spacing:1px;margin-left:2px">@time</span>
+    </a>
+  }
+</div>
+
+@{
+  var eventsData = new[]{
+    // (phase, phaseIcon, phaseTime, anchor, time, title, titleAccent, subtitle, desc, img, facts, highlights, flip)
+    ("Morning","🌅","8:00 AM – 12:00 PM","morning",
+     "8:00 AM","Royal Helicopter","Arrival","Kabaka's Grand Entry from the Sky",
+     "The day begins in dramatic fashion as the Royal Helicopter carrying His Majesty the Kabaka of Buganda descends over Lubiri Palace. Tens of thousands of Baganda look skyward, ululating and waving as the kingdom's sovereign makes his spectacular aerial arrival.",
+     "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=900&q=80",
+     new[]{"🚁 Royal Helicopter","👑 Kabaka's Entry","📍 Lubiri Palace Grounds"},
+     new[]{"Kabaka lands to thunderous ululations from 50,000 attendees","Royal Guard of Honour stands at attention","Aerial footage captured by official royal media crew"},
+     false),
+
+    ("Morning","🌅","8:00 AM – 12:00 PM","morning",
+     "9:00 AM","Gates Open —","Welcome to Lubiri","Festival Grounds Open to the Public",
+     "The great gates of Lubiri Palace swing open. Festival stewards guide guests to the trade fair, cultural exhibition tents, food courts, and the main performance arena. The atmosphere hums with anticipation.",
+     "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=900&q=80",
+     new[]{"🚪 3 Entry Gates","👥 50,000 Capacity","🎟 Ticketed Entry"},
+     new[]{"VIP lane with dedicated welcome from clan leaders","Cultural dress encouraged — gomesi and kanzu welcome ceremonies","Festival map distributed at each gate"},
+     true),
+
+    ("Morning","🌅","8:00 AM – 12:00 PM","morning",
+     "9:30 AM","The Key-Searching","Ceremony","Okunoonya Engule — Finding the Crown",
+     "One of Enkuuka's most beloved Kiganda traditions. A symbolic re-enactment of the ancient ritual where clan elders search for the royal keys — representing the unlocking of a new year. 52 clan representatives participate.",
+     "https://images.unsplash.com/photo-1519638399535-1b036603ac77?w=900&q=80",
+     new[]{"🗝 Ancient Ritual","🏰 Palace Courtyard","📜 All 52 Clans"},
+     new[]{"52 clan representatives each carry a clan-specific symbolic token","Elders chant traditional Kiganda songs throughout","The found key is presented to the Katikkiro in formal handover"},
+     false),
+
+    ("Midday","☀️","12:00 PM – 4:00 PM","midday",
+     "12:00 PM","Royal Cultural","Performances Begin","Baakisimba · Nankasa · Mbaga",
+     "The cultural heart of Enkuuka. Royal drummers, Baakisimba dancers in full regalia, and performers representing all 18 Masaza fill the stage. The engalabi and empuunyi drums set a rhythm that has powered Kiganda celebration for centuries.",
+     "https://raw.githubusercontent.com/AshrafGit256/enkuuka-site/main/public/assets/images/Maganda.jpeg",
+     new[]{"🥁 Royal Drums","💃 18 Masaza Troupes","🎶 3-Hour Cultural Set"},
+     new[]{"Engalabi and empuunyi royal drums open the cultural programme","Baakisimba — the queen's dance — performed by royal troupe","Nankasa and Mbaga warrior dances by Ssingo and Kyaggwe"},
+     true),
+
+    ("Midday","☀️","12:00 PM – 4:00 PM","midday",
+     "2:00 PM","Kabaka's Address","to the Nation","Royal Speech & Kingdom Announcements",
+     "His Majesty the Kabaka addresses the gathered Baganda and guests of honour. The Katikkiro and senior ministers speak in turn. Government representatives, foreign embassies, and traditional kingdoms of Uganda are formally welcomed.",
+     "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=900&q=80",
+     new[]{"👑 Kabaka Presides","🕑 ~90 Minutes","📺 Live on NBS TV"},
+     new[]{"Full live broadcast on NBS TV and Buganda Kingdom Radio","Address in Luganda with simultaneous English translation","Special recognition of outstanding clan contributions"},
+     false),
+
+    ("Evening","🌆","4:00 PM – 8:00 PM","evening",
+     "5:00 PM","Sunset Concert —","Supporting Acts","Rising Stars of Ugandan Music",
+     "As the sun descends over Mengo, the main stage transitions to live music. Supporting artists — Uganda's rising musicians — perform 30-minute sets across Afrobeats, Afropop, and Kiganda traditional fusion.",
+     "https://raw.githubusercontent.com/AshrafGit256/enkuuka-site/main/public/assets/images/Afrigo_Band.png",
+     new[]{"🎤 5+ Supporting Acts","🌇 Golden Hour","🎶 Afrobeats · Fusion"},
+     new[]{"Azawi performs a special 45-minute golden hour set","Muyinza Dance Troupe returns for a second performance","Food courts at peak — rolex, nyama choma, matoke fresh"},
+     false),
+
+    ("Evening","🌆","4:00 PM – 8:00 PM","evening",
+     "7:00 PM","Headline Acts —","Main Stage","Uganda's Biggest Artists Take the Stage",
+     "Night falls over Lubiri and the main stage blazes to life. Eddy Kenzo opens to a deafening reception, followed by Zuena Kirema's emotional classics. DJ Slick Stuart keeps energy at fever pitch between sets.",
+     "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=900&q=80",
+     new[]{"🌟 Eddy Kenzo Headlines","🎸 Afrigo Band Special Set","🔊 50,000-Person Crowd"},
+     new[]{"Eddy Kenzo opens with biggest catalogue hits — full band","Afrigo Band — Uganda's legendary orchestra — anniversary set","Zuena Kirema delivers emotional ballad set"},
+     true),
+
+    ("Night","🌙","8:00 PM – Midnight","night",
+     "9:30 PM","Royal Bonfire &","Fire Ceremony","Omuliro Gw'Omwaka — The Year's Fire",
+     "The Royal Bonfire is lit by a senior elder in the palace courtyard. The 'Omuliro Gw'Omwaka' symbolises the burning away of the old year. Thousands gather, some holding candles, as clan elders recite blessings in Luganda.",
+     "https://images.unsplash.com/photo-1519638399535-1b036603ac77?w=900&q=80",
+     new[]{"🔥 Sacred Royal Fire","📿 Elders' Blessing","🕯 Candle Procession"},
+     new[]{"Senior clan elder lights the royal fire using traditional methods","All 52 clan heads encircle the fire for collective blessing","Candle procession from fire to main stage — 3,000 candles"},
+     false),
+
+    ("Night","🌙","8:00 PM – Midnight","night",
+     "11:00 PM","Pre-Countdown","Show","The Final Hour Before the New Year",
+     "The final DJ set raises the festival to peak intensity. The giant screens flash the year's highlights. A last burst of traditional drumming signals midnight is minutes away.",
+     "https://raw.githubusercontent.com/AshrafGit256/enkuuka-site/main/public/assets/images/Enkkuka_Atmosphere.png",
+     new[]{"⏱ 60-Minute Final Set","📺 Year Highlights Reel","🥁 Final Royal Drum Roll"},
+     new[]{"Giant screen retrospective of the full day","Final royal drum roll by the Abasakiiko Ensemble","50,000 voices counting down from 10 minutes to midnight"},
+     true),
+  };
+
+  string lastPhase = "";
+}
+
+@foreach (var ev in eventsData) {
+  if (ev.Item1 != lastPhase) {
+    lastPhase = ev.Item1;
+    <div id="@ev.Item4" style="padding:20px 48px;display:flex;align-items:center;gap:20px;background:#F7EEEB;border-bottom:1px solid rgba(166,124,46,.10)">
+      <div style="flex:1;height:1px;background:rgba(166,124,46,.18)"></div>
+      <span class="f-block" style="font-size:1.4rem;letter-spacing:4px;color:#A62E2E;white-space:nowrap">@ev.Item2 @ev.Item1</span>
+      <div style="flex:1;height:1px;background:rgba(166,124,46,.18)"></div>
+      <span class="f-block" style="font-size:.85rem;letter-spacing:3px;color:#7A5252;white-space:nowrap">@ev.Item3</span>
+    </div>
+  }
+  <div style="border-bottom:1px solid rgba(166,124,46,.10)">
+    <div style="display:grid;grid-template-columns:1fr 1fr;min-height:480px;@(ev.Item13?"direction:rtl":"")">
+      <div style="position:relative;overflow:hidden;background:#1C1A13;@(ev.Item13?"direction:ltr":"")">
+        <img src="@ev.Item10" alt="@ev.Item6" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;filter:brightness(.62)">
+      </div>
+      <div style="background:#EDD8D0;padding:52px;display:flex;flex-direction:column;justify-content:center;@(ev.Item13?"direction:ltr":"")">
+        <div class="fu">
+          <div style="display:inline-flex;align-items:center;gap:8px;margin-bottom:18px">
+            <div style="width:28px;height:1px;background:#A62E2E"></div>
+            <span class="f-block" style="font-size:1.1rem;color:#A62E2E;letter-spacing:3px">@ev.Item5</span>
+          </div>
+          <h2 class="f-display" style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:700;color:#1C1A13;line-height:1.0;margin-bottom:6px">@ev.Item6 <em style="color:#A62E2E;font-style:italic">@ev.Item7</em></h2>
+          <p style="font-size:.72rem;letter-spacing:2px;text-transform:uppercase;color:#7A5252;font-weight:600;margin-bottom:20px">@ev.Item8</p>
+          <p style="font-size:.88rem;color:#7A5252;line-height:1.9;margin-bottom:24px">@ev.Item9</p>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px">
+            @foreach (var fact in ev.Item11) {
+              <div style="display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid rgba(166,124,46,.18);padding:6px 12px;font-size:.68rem;color:#3D3925;font-weight:500">@fact</div>
+            }
+          </div>
+          <div style="border-top:1px solid rgba(166,124,46,.18);padding-top:20px;display:flex;flex-direction:column;gap:10px">
+            @foreach (var h in ev.Item12) {
+              <div style="display:flex;align-items:flex-start;gap:10px;font-size:.8rem;color:#7A5252;line-height:1.6">
+                <div style="width:6px;height:6px;background:#A62E2E;border-radius:50%;flex-shrink:0;margin-top:6px"></div>
+                <span>@h</span>
+              </div>
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+}
+
+<!-- MIDNIGHT CLIMAX -->
+<div id="midnight" style="padding:20px 48px;display:flex;align-items:center;gap:20px;background:#F7EEEB;border-bottom:1px solid rgba(166,124,46,.10)">
+  <div style="flex:1;height:1px;background:rgba(166,124,46,.18)"></div>
+  <span class="f-block" style="font-size:1.4rem;letter-spacing:4px;color:#A62E2E;white-space:nowrap">🎆 Midnight Climax</span>
+  <div style="flex:1;height:1px;background:rgba(166,124,46,.18)"></div>
+  <span class="f-block" style="font-size:.85rem;letter-spacing:3px;color:#7A5252;white-space:nowrap">11:58 PM – 12:15 AM</span>
+</div>
+
+<div style="position:relative;min-height:600px;display:flex;align-items:center;justify-content:center;overflow:hidden;text-align:center">
+  <img src="https://raw.githubusercontent.com/AshrafGit256/enkuuka-site/main/public/assets/images/CountDown.png" alt="Fireworks" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.22);display:block">
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(166,124,46,.08) 0%,rgba(28,26,19,.6) 100%)"></div>
+  <div style="position:relative;z-index:2;padding:60px 48px;max-width:700px">
+    <div class="fu">
+      <p style="font-size:.65rem;letter-spacing:5px;text-transform:uppercase;color:#D45E5E;font-weight:700;margin-bottom:16px">12:00 AM · 31st December → 1st January</p>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,7vw,5.5rem);font-weight:700;color:#FAF5E8;line-height:0.9;margin-bottom:12px">Enkuuka<br><em style="color:#D45E5E;font-style:italic">Fireworks</em></h2>
+      <p class="f-block" style="letter-spacing:4px;color:rgba(250,245,232,.4);font-size:.85rem;margin-bottom:24px">OMULIRO GW'OMWAKA GULABYE OMULEMBE</p>
+      <p style="font-size:.9rem;color:rgba(250,245,232,.6);line-height:1.9;max-width:540px;margin:0 auto 36px">At the stroke of midnight, the night sky above Lubiri Palace explodes in red, red and white. 50,000 Baganda raise their voices together. The fireworks last twelve full minutes. Happy New Year, Uganda.</p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+        <a href="/Invitation" class="btn-red">Secure Your Place →</a>
+        <a href="/Programme" class="btn-outline" style="color:rgba(250,245,232,.7);border-color:rgba(250,245,232,.3)">Full Programme</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style="background:#EDD8D0;padding:52px 48px;border-top:1px solid rgba(166,124,46,.18);text-align:center">
+  <div class="fu">
+    <p class="s-label" style="justify-content:center">Be Part of It</p>
+    <h2 class="s-title f-display" style="text-align:center">Don't Miss <em>Enkuuka 2025</em></h2>
+    <p style="color:#7A5252;font-size:.88rem;line-height:1.85;max-width:540px;margin:0 auto 28px">From the helicopter arrival at dawn to the fireworks at midnight.</p>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+      <a href="/Invitation" class="btn-red">Get Your Invitation →</a>
+      <a href="/Programme" class="btn-outline">View Full Programme</a>
+    </div>
+  </div>
+</div>

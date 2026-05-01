@@ -1,0 +1,59 @@
+@page
+@model CultureModel
+@{ ViewData["Title"] = "Culture"; ViewData["Page"] = "Culture"; }
+
+<div class="phero">
+  <img src="https://raw.githubusercontent.com/AshrafGit256/enkuuka-site/main/public/assets/images/Buganda.png" alt="Culture" loading="lazy">
+  <div class="phero-ov"></div>
+  <div class="phero-content">
+    <p class="s-label">Show Culture · Have Heritage</p>
+    <h1 class="s-title f-display">Buganda — <em>Kingdom of Grace</em></h1>
+  </div>
+</div>
+
+<div class="ticker"><div class="ticker-track">@foreach(var w in new[]{"Kabaka","Baakisimba","Bark Cloth","Olubugo","Gomesi","Kanzu","Royal Culture","Kabaka","Baakisimba","Bark Cloth","Olubugo","Gomesi","Kanzu","Royal Culture"}){<span class="ticker-item">@w<span class="ticker-dot"></span></span>}</div></div>
+
+@{
+  var traditions = new[]{
+    (false,"https://raw.githubusercontent.com/AshrafGit256/enkuuka-site/main/public/assets/images/Kabaka.png","Royalty","Kabaka","of Buganda","The Kabaka is the living embodiment of the Buganda Kingdom — sovereign, spiritual symbol, and guardian of Kiganda tradition."),
+    (true,"https://raw.githubusercontent.com/AshrafGit256/enkuuka-site/main/public/assets/images/maganda.png","Tradition","Traditional","Dance","Baakisimba, Nankasa and Mbaga are sacred dances at royal gatherings. Every movement is a language of Kiganda identity."),
+    (false,"http://raw.githubusercontent.com/AshrafGit256/enkuuka-site/main/public/assets/images/Barkcloth.png","Tradition","Bark Cloth","(Olubugo)","UNESCO-recognised bark cloth crafted entirely by hand from the mutuba fig tree — the defining textile of Buganda."),
+    (true,"https://raw.githubusercontent.com/AshrafGit256/enkuuka-site/main/public/assets/images/DressCode.png","Tradition","Gomesi &","Kanzu","The elegant gomesi and flowing kanzu are the formal traditional dress of the Baganda. Seeing thousands of them at Lubiri on December 31st is extraordinary."),
+  };
+}
+@foreach (var (rev, img, label, title, accent, body) in traditions) {
+  <div class="split @(rev?"rev":"")">
+    <div class="split-img">
+      <img src="@img" alt="@title" loading="lazy">
+      <div class="split-img-overlay"></div>
+    </div>
+    <div class="split-content">
+      <div class="fu">
+        <p class="s-label">@label</p>
+        <h2 class="s-title f-display">@title <em>@accent</em></h2>
+        <p class="s-body" style="margin-bottom:22px">@body</p>
+      </div>
+    </div>
+  </div>
+}
+
+<div class="kabaka-band">
+  <div class="fu" style="text-align:center">
+    <p class="s-label" style="justify-content:center">His Majesty</p>
+    <h2 class="s-title f-display" style="font-size:clamp(1.8rem,5vw,3.4rem);text-align:center">The Kabaka of <em>Buganda</em></h2>
+    <p style="color:#7A5252;line-height:1.9;max-width:620px;margin:16px auto 28px;font-size:.9rem">His Majesty Ronald Muwenda Mutebi II, the 36th Kabaka, has presided over the kingdom since 1993. At Enkuuka y'Omwaka, his presence transforms the celebration into a royal gathering.</p>
+    <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+      @foreach (var (icon, t1, t2) in new[]{("👑","36th Kabaka","Since 1993"),("🏛","Lubiri Palace","Royal Seat"),("🌍","6M+ Baganda","Kingdom People"),("📜","52 Clans","All United")}) {
+        <div class="kab-stat">
+          <div style="font-size:1.4rem;margin-bottom:6px">@icon</div>
+          <p class="f-block" style="color:#1C1A13;font-size:.9rem">@t1</p>
+          <p style="font-size:.62rem;color:#7A5252;letter-spacing:2px;text-transform:uppercase;margin-top:2px">@t2</p>
+        </div>
+      }
+    </div>
+    <div style="display:flex;gap:12px;justify-content:center;margin-top:28px;flex-wrap:wrap">
+      <a href="/Clans" class="btn-red">Explore All 52 Clans →</a>
+      <a href="/Masaza" class="btn-outline">View 18 Masaza</a>
+    </div>
+  </div>
+</div>

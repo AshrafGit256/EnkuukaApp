@@ -1,0 +1,165 @@
+@page
+@model MasazaModel
+@using EnkuukaApp.Models
+@{ ViewData["Title"] = "Masaza"; ViewData["Page"] = "Masaza"; var first = SiteData.Masaza[0]; }
+
+<div class="phero">
+  <img src="http://raw.githubusercontent.com/AshrafGit256/enkuuka-site/main/public/assets/images/MasazaCup.png" alt="Masaza" loading="lazy">
+  <div class="phero-ov"></div>
+  <div class="phero-content">
+    <p class="s-label">Amasaza ga Buganda</p>
+    <h1 class="s-title f-display">The 18 Counties of <em>Buganda</em></h1>
+  </div>
+</div>
+
+<div class="ticker">
+  <div class="ticker-track">
+    @foreach (var w in new[]{"18 Masaza","Saza Chiefs","Buganda Counties","County Delegations","Masaza Cup","18 Masaza","Saza Chiefs","Buganda Counties","County Delegations","Masaza Cup"}) {
+      <span class="ticker-item">@w<span class="ticker-dot"></span></span>
+    }
+  </div>
+</div>
+
+<!-- STATS BAR -->
+<div style="background:#EDD8D0;padding:40px 48px;border-bottom:1px solid rgba(166,124,46,.18);display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:0">
+  @foreach (var (num, lbl) in new[]{("18","Counties (Amasaza)"),("250+","Sub-counties"),("6M+","Baganda People"),("1964","Last boundary change")}) {
+    <div style="text-align:center;padding:8px 12px;border-right:1px solid rgba(166,124,46,.10)">
+      <span class="stat-num f-block" style="font-size:1.8rem">@num</span>
+      <span class="stat-label">@lbl</span>
+    </div>
+  }
+</div>
+
+<!-- MAP + LIST -->
+<div style="background:#F7EEEB;padding:44px 48px 0">
+  <p class="s-label">Interactive Map</p>
+  <h2 class="s-title f-display">Explore Every <em>County</em></h2>
+  <p style="font-size:.85rem;color:#7A5252;margin-bottom:24px;line-height:1.8;max-width:560px">Select any county from the list to explore its history, Saza Chief, and landmarks.</p>
+</div>
+
+<div class="masaza-main-grid fu" style="margin:0 48px;border:1px solid rgba(166,124,46,.18)">
+  <!-- List -->
+  <div class="masaza-list-panel">
+    @{ int mi = 0; }
+    @foreach (var saza in SiteData.Masaza) {
+      <div class="saza-list-item @(mi==0?"active":"")" data-name="@saza.Name" data-chief="@saza.Chief" data-desc="@saza.Desc" data-known="@saza.Known">
+        <div class="saza-list-num">@((mi+1).ToString("D2"))</div>
+        <div class="saza-list-content">
+          <p class="saza-list-name f-display">@saza.Name</p>
+          <p class="saza-list-chief">Chief: @saza.Chief · @saza.Area</p>
+        </div>
+        <span class="saza-list-arrow">→</span>
+      </div>
+      mi++;
+    }
+  </div>
+  <!-- Map panel -->
+  <div class="masaza-map-panel">
+    <div class="masaza-map-header">
+      <p style="font-size:.6rem;letter-spacing:3px;text-transform:uppercase;color:#A62E2E;font-weight:700">Buganda Kingdom — Official Map</p>
+      <p style="font-size:.72rem;color:#7A5252;margin-top:2px">Select a county from the list to view its details</p>
+    </div>
+    <div class="masaza-map-wrap">
+      <img class="buganda-map-img" src="http://raw.githubusercontent.com/AshrafGit256/enkuuka-site/main/public/assets/images/BugandaMap2.png" alt="Map of Buganda Kingdom" loading="lazy">
+    </div>
+    <div class="masaza-detail-card">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px">
+        <div style="flex:1">
+          <p class="masaza-detail-name f-display" id="detail-name">@first.Name</p>
+          <p class="masaza-detail-chief" id="detail-chief">Saza Chief: @first.Chief</p>
+          <p class="masaza-detail-desc" id="detail-desc">@first.Desc</p>
+        </div>
+        <div style="flex-shrink:0;text-align:right">
+          <span style="font-size:.55rem;letter-spacing:2px;text-transform:uppercase;color:#7A5252;display:block;margin-bottom:3px">Known for</span>
+          <span style="font-size:.72rem;color:#1C1A13;font-weight:600" id="detail-known">@first.Known</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CARD GRID -->
+<div style="background:#F7EEEB;padding:44px 48px 0">
+  <div class="fu">
+    <p class="s-label">All 18 Counties</p>
+    <h2 class="s-title f-display">The Kingdom's <em>Fabric</em></h2>
+    <p style="font-size:.85rem;color:#7A5252;margin-bottom:24px;line-height:1.8;max-width:540px">Every Saza contributes its own culture, leadership, and delegation to Enkuuka y'Omwaka. Hover any card to learn more.</p>
+  </div>
+</div>
+<div class="fu" style="padding:0 48px 48px">
+  <div class="masaza-cards-grid">
+    @{ mi = 0; }
+    @foreach (var saza in SiteData.Masaza) {
+      <div class="masaza-card">
+        <img src="@saza.Img" alt="@saza.Name" loading="lazy">
+        <div class="masaza-card-overlay"></div>
+        <div class="masaza-card-body">
+          <span class="masaza-card-num">SSAZA @((mi+1).ToString("D2"))</span>
+          <p class="masaza-card-name f-display">@saza.Name</p>
+          <p class="masaza-card-chief">@saza.Chief</p>
+        </div>
+      </div>
+      mi++;
+    }
+  </div>
+</div>
+
+<!-- HISTORY -->
+<div class="masaza-history fu">
+  <div class="masaza-history-text">
+    <p style="font-size:.65rem;letter-spacing:4px;text-transform:uppercase;color:#D45E5E;font-weight:700;margin-bottom:14px">Historical Context</p>
+    <h2>The Kingdom's <em>Administrative Genius</em></h2>
+    <p>Buganda's county system is one of the most sophisticated pre-colonial administrative structures in sub-Saharan Africa. Each Masaza was governed by a Saza Chief appointed by the Kabaka, answerable to the Lukiiko (Parliament), and responsible for tax collection, military recruitment, and judicial matters.</p>
+    <p>The counties are sub-divided into Gombolola (sub-counties), then Miluka (parishes), and finally individual family units called <em style="color:#D45E5E">Enju</em> — creating a hierarchy of governance that endured for centuries before colonial reorganisation.</p>
+    <p>Buganda originally had 20 counties. In 1964, following a referendum, Buyaga and Bugangaizi counties were ceded to the Bunyoro Kingdom — reducing the total to the current 18 Masaza.</p>
+  </div>
+  <div>
+    <div class="masaza-history-facts">
+      @foreach (var (num, lbl) in new[]{("20","Original Counties"),("1964","Last Boundary Change"),("6","Levels of Governance"),("84","Ssese Islands in Ssese Saza")}) {
+        <div class="masaza-history-fact">
+          <span class="masaza-history-fact-num f-block">@num</span>
+          <span class="masaza-history-fact-label">@lbl</span>
+        </div>
+      }
+    </div>
+    <div style="margin-top:2px;background:rgba(255,255,255,.04);border:1px solid rgba(201,168,76,.12);padding:20px">
+      <p style="font-size:.65rem;letter-spacing:3px;text-transform:uppercase;color:#D45E5E;margin-bottom:8px;font-weight:700">The Hierarchy</p>
+      @{ int hi = 1; }
+      @foreach (var level in new[]{"Masaza (County)","Gombolola (Sub-county)","Miluka (Parish)","Mutala (Village)","Enju (Family Unit)"}) {
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:@(hi<5?"8px":"0")">
+          <div style="width:20px;height:20px;background:rgba(212,174,94,.15);border:1px solid rgba(212,174,94,.25);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+            <span style="font-family:'Bebas Neue',sans-serif;font-size:.65rem;color:#D45E5E">@hi</span>
+          </div>
+          <span style="font-size:.8rem;color:rgba(250,245,232,.55)">@level</span>
+        </div>
+        hi++;
+      }
+    </div>
+  </div>
+</div>
+
+<!-- MASAZA CUP -->
+<div class="masaza-cup fu">
+  <div class="masaza-cup-img-wrap">
+    <img src="http://raw.githubusercontent.com/AshrafGit256/enkuuka-site/main/public/assets/images/MasazaCup.png" alt="Masaza Cup" loading="lazy">
+    <span class="masaza-cup-badge">Since 2004</span>
+  </div>
+  <div>
+    <p class="s-label">The Annual Tournament</p>
+    <h2 class="s-title f-display">The <em>Masaza Cup</em></h2>
+    <p style="font-size:.88rem;color:#7A5252;line-height:1.9;margin-bottom:14px">Every year, Buganda Kingdom's 18 counties compete in the Masaza Cup — one of Uganda's most beloved football tournaments. More than a sporting event, the Cup is a celebration of county pride, clan identity, and Kiganda spirit.</p>
+    <p style="font-size:.88rem;color:#7A5252;line-height:1.9;margin-bottom:24px">The tournament has been running since 2004 and has become a platform for discovering Uganda's grassroots football talent. Many Uganda Cranes players were first spotted at the Masaza Cup.</p>
+    <div style="display:flex;gap:14px;flex-wrap:wrap;margin-bottom:28px">
+      @foreach (var (top, bot) in new[]{("18","Counties Compete"),("2004","Year Founded"),("Uganda Cranes","Talent Source")}) {
+        <div style="padding:12px 16px;border:1px solid rgba(166,124,46,.18);background:#fff;text-align:center;min-width:110px">
+          <p class="f-block" style="color:#A62E2E;font-size:.85rem">@top</p>
+          <p style="font-size:.6rem;color:#7A5252;letter-spacing:1.5px;text-transform:uppercase;margin-top:2px">@bot</p>
+        </div>
+      }
+    </div>
+    <div style="display:flex;gap:12px;flex-wrap:wrap">
+      <a href="/Culture" class="btn-red">Explore Buganda Culture →</a>
+      <a href="/Events" class="btn-outline">Day Events at Enkuuka</a>
+    </div>
+  </div>
+</div>

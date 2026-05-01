@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] — Enkuuka y'Omwaka</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="mainNav">
+    <div class="nav-logo f-display" onclick="location.href='/'">Enkuuka <em>y'Omwaka</em></div>
+    <ul class="nav-links">
+        <li class="@(ViewData["Page"]?.ToString()=="Home"?"active":"")"><a href="/">Home</a></li>
+        <li class="@(ViewData["Page"]?.ToString()=="Culture"?"active":"")"><a href="/Culture">Culture</a></li>
+        <li class="@(ViewData["Page"]?.ToString()=="Clans"?"active":"")"><a href="/Clans">Clans</a></li>
+        <li class="@(ViewData["Page"]?.ToString()=="Masaza"?"active":"")"><a href="/Masaza">Masaza</a></li>
+        <li class="@(ViewData["Page"]?.ToString()=="Events"?"active":"")"><a href="/Events">Events</a></li>
+        <li class="@(ViewData["Page"]?.ToString()=="Entertainment"?"active":"")"><a href="/Entertainment">Entertainment</a></li>
+        <li class="@(ViewData["Page"]?.ToString()=="Business"?"active":"")"><a href="/Business">Business</a></li>
+        <li class="@(ViewData["Page"]?.ToString()=="Gallery"?"active":"")"><a href="/Gallery">Gallery</a></li>
+        <li class="@(ViewData["Page"]?.ToString()=="Accommodation"?"active":"")"><a href="/Accommodation">Accommodation</a></li>
+    </ul>
+    <div style="display:flex;align-items:center;gap:12px">
+        <a href="/Invitation" class="nav-cta">Get Tickets</a>
+        <div class="hamburger" id="hamburger">
+            <span></span><span></span><span></span>
+        </div>
+    </div>
+</nav>
+<div class="mob-drawer" id="mobDrawer">
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/Culture">Culture</a></li>
+        <li><a href="/Clans">Clans</a></li>
+        <li><a href="/Masaza">Masaza</a></li>
+        <li><a href="/Events">Events</a></li>
+        <li><a href="/Entertainment">Entertainment</a></li>
+        <li><a href="/Business">Business</a></li>
+        <li><a href="/Programme">Programme</a></li>
+        <li><a href="/Gallery">Gallery</a></li>
+        <li><a href="/Accommodation">Accommodation</a></li>
+        <li><a href="/Invitation">Invitation</a></li>
+        <li><a href="/Contact">Contact</a></li>
+    </ul>
+</div>
+
+<main style="padding-top:60px">
+    @RenderBody()
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="footer-grid">
+        <div>
+            <p class="footer-brand f-display">Enkuuka <em>y'Omwaka</em></p>
+            <p class="footer-tagline">Uganda's premier cultural and economic festival. Every 31st December at Lubiri Palace, Mengo.</p>
+            <div class="social-row">
+                <div class="social-btn">𝕏</div>
+                <div class="social-btn">f</div>
+                <div class="social-btn">▶</div>
+                <div class="social-btn">📷</div>
+            </div>
+        </div>
+        <div>
+            <p class="footer-col-head">Event</p>
+            <ul class="footer-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/Culture">Culture</a></li>
+                <li><a href="/Clans">Clans</a></li>
+                <li><a href="/Masaza">Masaza</a></li>
+                <li><a href="/Events">Events</a></li>
+                <li><a href="/Programme">Programme</a></li>
+            </ul>
+        </div>
+        <div>
+            <p class="footer-col-head">Attend</p>
+            <ul class="footer-links">
+                <li><a href="/Accommodation">Accommodation</a></li>
+                <li><a href="/Business">Business</a></li>
+                <li><a href="/Gallery">Gallery</a></li>
+                <li><a href="/Invitation">Invitation</a></li>
+                <li><a href="/Contact">Contact</a></li>
+            </ul>
+        </div>
+        <div>
+            <p class="footer-col-head">Contact</p>
+            <ul class="footer-links">
+                <li>Lubiri Palace, Mengo</li>
+                <li>Kampala, Uganda</li>
+                <li>info@enkuuka.ug</li>
+                <li>+256 414 000 000</li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p class="footer-copy">© 2025 Enkuuka y'Omwaka · Buganda Kingdom</p>
+        <div class="social-row">
+            <div class="social-btn">𝕏</div>
+            <div class="social-btn">f</div>
+            <div class="social-btn">▶</div>
+            <div class="social-btn">📷</div>
+        </div>
+    </div>
+</footer>
+
+<script src="~/js/site.js" asp-append-version="true"></script>
+</body>
+</html>

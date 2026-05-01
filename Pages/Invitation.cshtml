@@ -1,0 +1,80 @@
+@page
+@model InvitationModel
+@{ ViewData["Title"] = "Invitation"; ViewData["Page"] = "Invitation"; }
+
+<div style="background:#F7EEEB;min-height:100vh;padding-top:0">
+  <div class="phero">
+    <img src="https://raw.githubusercontent.com/AshrafGit256/enkuuka-site/main/public/assets/images/Buganda.png" alt="Invitation" loading="lazy">
+    <div class="phero-ov"></div>
+    <div class="phero-content">
+      <p class="s-label">Digital E-Invitation</p>
+      <h1 class="s-title f-display">Your <em>Royal Invitation</em></h1>
+    </div>
+  </div>
+
+  <div class="ticker"><div class="ticker-track">@foreach(var w in new[]{"Enkuuka y'Omwaka","31 December 2025","Lubiri Palace","Mengo Kampala","Get Your Tickets","Royal Invitation","Enkuuka y'Omwaka","31 December 2025","Lubiri Palace","Mengo Kampala","Get Your Tickets","Royal Invitation"}){<span class="ticker-item">@w<span class="ticker-dot"></span></span>}</div></div>
+
+  <div style="max-width:680px;margin:0 auto;padding:64px 24px">
+    <div class="fu" style="text-align:center;margin-bottom:36px">
+      <p class="s-label" style="justify-content:center">Personalise Your Invitation</p>
+      <p style="color:#7A5252;font-size:.85rem;margin-top:8px">Enter your name below to generate a personalised digital invitation you can share.</p>
+    </div>
+
+    <!-- Ticket Tiers -->
+    <div class="fu" style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-bottom:40px">
+      @foreach (var (tier, price, perks, highlight) in new[]{
+        ("General","UGX 20,000",new[]{"Festival access","Cultural shows","Food court access"},""),
+        ("VIP","UGX 75,000",new[]{"Reserved seating","VIP lounge","Welcome drink","Priority entry"},"Most Popular"),
+        ("Royal Table","UGX 250,000",new[]{"Exclusive table (×10)","Full dinner service","Meet & greet","Premium view"},""),
+      }) {
+        <div style="background:#fff;padding:24px;border:1px solid rgba(166,124,46,.18);position:relative;text-align:center">
+          @if (!string.IsNullOrEmpty(highlight)) {
+            <div style="position:absolute;top:-10px;left:50%;transform:translateX(-50%);background:#A62E2E;color:#fff;font-size:.52rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:4px 12px;white-space:nowrap">@highlight</div>
+          }
+          <p class="f-block" style="font-size:.65rem;letter-spacing:3px;color:#A62E2E;margin-bottom:6px">@tier</p>
+          <p class="f-display" style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:700;color:#1C1A13;margin-bottom:14px">@price</p>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:6px;text-align:left;margin-bottom:16px">
+            @foreach (var p in perks) {
+              <li style="font-size:.78rem;color:#7A5252;display:flex;align-items:center;gap:6px"><span style="color:#A62E2E;font-size:.7rem">✓</span>@p</li>
+            }
+          </ul>
+        </div>
+      }
+    </div>
+
+    <!-- Personalise form -->
+    <div id="invForm" class="fu">
+      <div style="background:#EDD8D0;border:1px solid rgba(166,124,46,.18);padding:32px">
+        <p style="color:#7A5252;font-size:.8rem;margin-bottom:12px">Enter your name to personalise your invitation</p>
+        <input id="invName" class="contact-input" placeholder="Your full name…" style="margin-bottom:12px">
+        <button id="invPreviewBtn" class="btn-red" style="width:100%">Preview My Invitation →</button>
+      </div>
+    </div>
+
+    <!-- Preview -->
+    <div id="invPreview" style="display:none">
+      <div class="inv-card fu">
+        <div class="inv-top">
+          <p style="font-size:.62rem;letter-spacing:4px;text-transform:uppercase;color:#7A5252;margin-bottom:7px">The Buganda Kingdom · Lubiri Palace</p>
+          <h2 class="f-display" style="font-family:'Cormorant Garamond',serif;font-size:2.2rem;color:#1C1A13;font-weight:700;line-height:.95">Enkuuka<br><em style="color:#A62E2E">y'Omwaka</em></h2>
+        </div>
+        <div class="inv-body">
+          <p style="font-size:.65rem;color:#7A5252;letter-spacing:3px;text-transform:uppercase;margin-bottom:10px">Cordially Invites</p>
+          <p class="f-display" style="font-family:'Cormorant Garamond',serif;font-size:1.7rem;color:#1C1A13;font-weight:700;margin-bottom:16px;line-height:1" id="invPreviewName">Honoured Guest</p>
+          <div class="inv-divider"></div>
+          <p style="font-size:.82rem;color:#7A5252;line-height:1.85;margin-bottom:16px">to celebrate the New Year with the Baganda people</p>
+          <div style="background:rgba(166,124,46,.08);border:1px solid rgba(166,124,46,.18);padding:14px 20px;margin-bottom:14px">
+            <p class="f-block" style="font-size:.85rem;color:#1C1A13">31st December 2025</p>
+            <p style="color:#7A5252;font-size:.75rem;margin-top:3px">📍 Lubiri Palace, Mengo, Kampala</p>
+            <p style="color:#A62E2E;font-size:.72rem;margin-top:3px;font-weight:600">8:00 AM – Past Midnight</p>
+          </div>
+          <p class="f-display" style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.85rem;color:#7A5252">Omuliro gw'omwaka gulabye omulembe!</p>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;justify-content:center;margin-top:18px;flex-wrap:wrap">
+        <button class="btn-red" onclick="alert('Share feature: copy the invitation link or screenshot!')">Share Invitation 🔗</button>
+        <button id="invEditBtn" class="btn-outline" style="padding:12px 22px">Edit Name</button>
+      </div>
+    </div>
+  </div>
+</div>

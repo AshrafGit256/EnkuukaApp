@@ -1,0 +1,66 @@
+@page
+@model ProgrammeModel
+@using EnkuukaApp.Models
+@{ ViewData["Title"] = "Programme"; ViewData["Page"] = "Programme"; }
+
+<div class="phero">
+  <img src="https://raw.githubusercontent.com/AshrafGit256/enkuuka-site/main/public/assets/images/Enkkuka_Atmosphere.png" alt="Programme" loading="lazy">
+  <div class="phero-ov"></div>
+  <div class="phero-content">
+    <p class="s-label">31st December</p>
+    <h1 class="s-title f-display">The Day's <em>Programme</em></h1>
+  </div>
+</div>
+
+<div class="ticker"><div class="ticker-track">@foreach(var w in new[]{"8AM Helicopter","Gates Open","Key Ceremony","Cultural Performances","Kabaka's Address","Clan Championships","Sunset Concert","Headline Acts","Royal Bonfire","Countdown","Fireworks","8AM Helicopter","Gates Open","Key Ceremony","Cultural Performances","Kabaka's Address","Clan Championships","Sunset Concert","Headline Acts","Royal Bonfire","Countdown","Fireworks"}){<span class="ticker-item">@w<span class="ticker-dot"></span></span>}</div></div>
+
+<div style="background:#F7EEEB">
+  <div class="timeline-grid">
+    <div style="padding:48px 48px">
+      <div class="fu">
+        <p class="s-label">Full Schedule</p>
+        <h2 class="s-title f-display">From <em>Dawn to Midnight</em></h2>
+        <p class="s-body" style="margin-bottom:36px">Every hour at Enkuuka is crafted for celebration, culture and community.</p>
+      </div>
+      @foreach (var item in SiteData.Programme) {
+        <div class="tl-item fu">
+          <div class="tl-time">@item.Time</div>
+          <div class="tl-body">
+            <div class="tl-dot"></div>
+            <p class="tl-title f-display">@item.Title</p>
+            <p class="tl-desc">@item.Desc</p>
+          </div>
+        </div>
+      }
+    </div>
+    <div style="position:relative;overflow:hidden;min-height:500px">
+      <img src="https://raw.githubusercontent.com/AshrafGit256/enkuuka-site/main/public/assets/images/CountDown.png" alt="Fireworks" loading="lazy" style="width:100%;height:100%;object-fit:cover;filter:brightness(.38);display:block">
+      <div style="position:absolute;inset:0;background:linear-gradient(to top,#F7EEEB,transparent 50%);display:flex;align-items:flex-end;padding:36px 40px">
+        <div>
+          <p class="s-label">Midnight Fireworks</p>
+          <h2 class="s-title f-display">Fireworks over <em>Lubiri Palace</em></h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Quick facts -->
+<div style="background:#1C1A13;padding:52px 48px">
+  <div class="fu" style="text-align:center;margin-bottom:36px">
+    <p class="s-label" style="justify-content:center;color:#D45E5E">@("" + "<!-- before selector -->")</p>
+    <p style="font-size:.65rem;letter-spacing:5px;text-transform:uppercase;color:#D45E5E;font-weight:700;margin-bottom:10px">By The Numbers</p>
+    <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;color:#FAF5E8;line-height:1">A Full Day of <em style="color:#D45E5E;font-style:italic">Royal Celebration</em></h2>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:2px">
+    @foreach (var (num, lbl) in new[]{("16","Hours of Events"),("52","Clan Delegations"),("200+","Vendors & Exhibitors"),("50,000","Expected Attendees")}) {
+      <div style="background:rgba(255,255,255,.04);border:1px solid rgba(201,168,76,.12);padding:28px 20px;text-align:center">
+        <span class="f-block" style="font-size:2rem;color:#D45E5E;display:block;line-height:1;margin-bottom:6px">@num</span>
+        <span style="font-size:.6rem;letter-spacing:2.5px;text-transform:uppercase;color:rgba(250,245,232,.3)">@lbl</span>
+      </div>
+    }
+  </div>
+  <div style="text-align:center;margin-top:32px">
+    <a href="/Invitation" class="btn-red">Get Your Tickets →</a>
+  </div>
+</div>
