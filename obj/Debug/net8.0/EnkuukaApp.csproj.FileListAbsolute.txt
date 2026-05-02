@@ -27,3 +27,4 @@ C:\Users\hp\OneDrive\Desktop\EnkuukaApp\obj\Debug\net8.0\refint\EnkuukaApp.dll
 C:\Users\hp\OneDrive\Desktop\EnkuukaApp\obj\Debug\net8.0\EnkuukaApp.pdb
 C:\Users\hp\OneDrive\Desktop\EnkuukaApp\obj\Debug\net8.0\EnkuukaApp.genruntimeconfig.cache
 C:\Users\hp\OneDrive\Desktop\EnkuukaApp\obj\Debug\net8.0\ref\EnkuukaApp.dll
+C:\Users\hp\OneDrive\Desktop\EnkuukaApp\obj\Debug\net8.0\EnkuukaApp.sourcelink.json

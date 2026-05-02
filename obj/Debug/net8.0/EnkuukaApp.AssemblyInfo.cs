@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("EnkuukaApp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1ffb4b814d791a6790b0bd1651f9c5604b183a17")]
 [assembly: System.Reflection.AssemblyProductAttribute("EnkuukaApp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("EnkuukaApp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -1,0 +1,6 @@
+C:\Users\hp\OneDrive\Desktop\EnkuukaApp\publish\EnkuukaApp.exe
+C:\Users\hp\OneDrive\Desktop\EnkuukaApp\publish\appsettings.json
+C:\Users\hp\OneDrive\Desktop\EnkuukaApp\publish\EnkuukaApp.dll
+C:\Users\hp\OneDrive\Desktop\EnkuukaApp\publish\EnkuukaApp.deps.json
+C:\Users\hp\OneDrive\Desktop\EnkuukaApp\publish\EnkuukaApp.runtimeconfig.json
+C:\Users\hp\OneDrive\Desktop\EnkuukaApp\publish\EnkuukaApp.pdb
